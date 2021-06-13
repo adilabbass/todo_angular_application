@@ -1,0 +1,50 @@
+<div class="container">
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h4>Create Task </h4>
+        </div>
+        <div class="col-12 mt-4">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"><b>Title</b></label>
+                <input type="email" class="form-control" id="title" name="title" placeholder="" [(ngModel)]="todo.title"
+                    aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"><b>Description</b></label>
+                <textarea id="exampleInputPassword" name="description" class="form-control" [(ngModel)]="todo.description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary float-right" (click)="addTask(todo)">Add Task</button>
+        </div>
+    </div>
+
+
+
+    <div class="row mt-4">
+        <div class="col-12">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of todos">
+                        <td>{{row.title}}</td>
+                        <td>{{row.description}}</td>
+                        <td *ngIf="row.tastStatus">In Progress</td>
+                        <td *ngIf="!row.tastStatus">Complete</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm mar2" (click)="deleteTask(row)"> Delete</button>
+                            <button class="btn btn-primary btn-sm mr-2" (click)="updateTask(row)"> Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
